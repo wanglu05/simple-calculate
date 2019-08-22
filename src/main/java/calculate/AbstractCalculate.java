@@ -65,23 +65,11 @@ public abstract class AbstractCalculate implements Serializable {
      *  初始一般会由调用者来传递初始化，此处默认初始化值为Constants.STRING_ONE
      */
     protected HashMap<String, Object> SYSTEM_VARIABLE = new HashMap<String, Object>(){{
-       for (String name : Constants.BASIS_SYSTEM_VARIABLE) {
-            put(name, Constants.STRING_ONE);
-        }
-
-        for (String name : Constants.PUBLIC_AREA_READ_SYSTEM_VARIABLE) {
-            put(name, Constants.STRING_ONE);
-        }
-
         for (String name : Constants.ROOM_SYSTEM_VARIABLE) {
             put(name, Constants.STRING_ONE);
         }
 
         for (String name : Constants.ROOM_READ_SYSTEM_VARIABLE) {
-            put(name, Constants.STRING_ONE);
-        }
-
-        for (String name : Constants.PUBLIC_AREA_SYSTEM_VARIABLE) {
             put(name, Constants.STRING_ONE);
         }
     }};

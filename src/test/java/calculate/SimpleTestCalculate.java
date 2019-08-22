@@ -29,12 +29,7 @@ public class SimpleTestCalculate {
             "数值 加压用电\n" +
             "数值     用水量\n" +
             "用水量=收费标准+1\n" +
-            "如果 (max(43.3,52,44,0.2,99)>= 99 && !(max(99,33)/3==33))==true 则\n"+
-            "   加压用电=88888888\n" +
-            "如果完\n" +
-            "用水量=3\n" +
             "如果 !!(!(max(43.3,99)-2<=66) || 1==2 && min(用水量,4)>3 || (max(44,33) > 10 &&  7>9)) != true 则\n"+
-            //"如果 !(用水量!=(3*2)) || 用水量<3 则\n"+
             "用水量=MOD(5,2)\n" +
             "否则如果 用水量==26 || 1==1 则\n"+
             "   加压用电=MAX(4.0038,4)+2\n" +
@@ -49,14 +44,10 @@ public class SimpleTestCalculate {
             "   用水量=QUOTIENT(5,2)\n" +
             "   加压用电=2\n" +
             "如果完\n"+
-
             "用水量=sqrt(-43.1)\n" +
-            "用水量=sqrt(1)\n" +
-            "用水量=int(-43.1)\n" +
             "用水量=TROWC(-43.1)\n" +
             "用水量=max(43.3,52,44,0.2,99)\n" +
             "用水量=IN(\"3rwere\",\"r\", \"e\")\n" +
-
             "如果 (max(43.3,52,44,0.2,99)>= \"99\")==true 则\n"+
             "   加压用电=88888888\n" +
             "如果完\n" +
@@ -87,12 +78,18 @@ public class SimpleTestCalculate {
             "加压用电=ROUND(((加压电本次读数+5-加压电上次读数*(加压电上次读数+加压电本次读数*(MIN(加压电本次读数,0.5)/2)))-(加压电上次读数+3)*2)*3,2)\n" ;
 
     public static void main(String[] args) throws Exception {
+        // 设置系统变量
         HashMap<String, Object> systemVariable = Maps.newHashMap();
         systemVariable.put("费用_金额", 0.5);
         systemVariable.put("房间编号", "SNG-001-23");
         MeterCalculate meterCalculate = new MeterCalculate(content, systemVariable);
+        // 实例化补充系统变量
         meterCalculate.putSystemVariable("收费标准", 66);
+        // 验证表达式是否正确
+        meterCalculate.verifyContent();
+        // 执行编译，可得到相关结果
         meterCalculate.compile();
+        // 可以得到相关变量的值
         logger.info(">>>>>{}", JSON.toJSONString(meterCalculate.VARIABLE_POOL()));
     }
 }
