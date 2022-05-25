@@ -8,7 +8,7 @@
     <artifactId>simple-calculate-client</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <spring.version>4.2.6.RELEASE</spring.version>
+        <spring.version>5.2.22.RELEASE</spring.version>
         <slf4j.version>1.7.25</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <!-- 覆盖maven默认配置 -->
